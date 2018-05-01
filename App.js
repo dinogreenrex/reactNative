@@ -9,8 +9,8 @@ import {AsyncStorage} from "react-native"; //Import the app/index.js file
 export default class App extends Component {
 	async componentDidMount() {
 		await Font.loadAsync({
-			Arial: require("fonts/arial.ttf"),
-			Roboto_medium: require("fonts/Roboto-Medium.ttf"),
+			Arial: require("./fonts/arial.ttf"),
+			Roboto_medium: require("./fonts/Roboto-Medium.ttf"),
 		});
 	}
 	render() {
