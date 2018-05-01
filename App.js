@@ -13,6 +13,7 @@ export default class App extends Component {
 			Roboto_medium: require("./fonts/Roboto-Medium.ttf"),
 		});
 	}
+	
 	render() {
 		return (
 			<Provider store={store}>
