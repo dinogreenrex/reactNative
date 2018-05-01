@@ -4,7 +4,7 @@ import {
 	FlatList,
 	View,
 	Text,
-	ActivityIndicator, TouchableHighlight, ActionSheetIOS
+	ActivityIndicator, TouchableHighlight,
 } from 'react-native';
 
 import {bindActionCreators} from 'redux';
@@ -13,6 +13,8 @@ import { connect } from 'react-redux';
 import * as ReduxActions from '../actions'; //Import your actions
 
 import {Actions} from 'react-native-router-flux'
+
+import {ActionSheet, Root} from 'native-base'
 
 //Buttons for Action Sheet
 const BUTTONS = [
@@ -38,7 +40,7 @@ class Home extends Component {
 	}
 
 	showOptions(quote) {
-		ActionSheetIOS.showActionSheetWithOptions({
+		ActionSheet.show({
 				options: BUTTONS,
 				cancelButtonIndex: CANCEL_INDEX,
 				destructiveButtonIndex: 1,
@@ -58,25 +60,28 @@ class Home extends Component {
 			);
 		} else {
 			return (
-				<View style={styles.container}>
-					<FlatList
-						ref='listRef'
-						data={this.props.quotes}
-						renderItem={this.renderItem}
-						keyExtractor={(item, index) => index}/>
+				<Root>
+					<View style={styles.container}>
+						<FlatList
+							ref='listRef'
+							data={this.props.quotes}
+							renderItem={this.renderItem}
+							keyExtractor={(item, index) => index}/>
 
 
-					<TouchableHighlight style={styles.addButton}
-					                    underlayColor='#ff7043' onPress={() => Actions.new_quote()}>
-						<Text style={{fontSize: 25, color: 'white'}}>+</Text>
-					</TouchableHighlight>
-				</View>
+						<TouchableHighlight style={styles.addButton}
+						                    underlayColor='#ff7043' onPress={() => Actions.new_quote()}>
+							<Text style={{fontSize: 25, color: 'white'}}>+</Text>
+						</TouchableHighlight>
+					</View>
+				</Root>
 			);
 		}
 	}
 
 	renderItem({item, index}) {
 		return (
+			<Root>
 			<TouchableHighlight onPress={() => this.showOptions(item)} underlayColor='rgba(0,0,0,.2)'>
 				<View style={styles.row}>
 					<Text style={styles.quote}>
@@ -87,6 +92,7 @@ class Home extends Component {
 					</Text>
 				</View>
 			</TouchableHighlight>
+			</Root>
 		)
 	}
 };
