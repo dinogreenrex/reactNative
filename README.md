@@ -1,3 +1,4 @@
+Simple App with crud written with react-native. <br />
 to install do: 
 ```
 npm install --save 
